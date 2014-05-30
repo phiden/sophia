@@ -1,0 +1,175 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* line 17, ../../../../../../.rvm/gems/ruby-1.9.3-p448/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline; }
+
+/* line 22, ../../../../../../.rvm/gems/ruby-1.9.3-p448/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1; }
+
+/* line 24, ../../../../../../.rvm/gems/ruby-1.9.3-p448/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 26, ../../../../../../.rvm/gems/ruby-1.9.3-p448/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+/* line 28, ../../../../../../.rvm/gems/ruby-1.9.3-p448/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+/* line 30, ../../../../../../.rvm/gems/ruby-1.9.3-p448/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none; }
+  /* line 103, ../../../../../../.rvm/gems/ruby-1.9.3-p448/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+  q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none; }
+
+/* line 32, ../../../../../../.rvm/gems/ruby-1.9.3-p448/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none; }
+
+/* line 116, ../../../../../../.rvm/gems/ruby-1.9.3-p448/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block; }
+
+/* ------- COLORS ------- */
+/* ------- FONTS ------- */
+/* ------- PADDINGS ------- */
+/* ------- MIXINS ------- */
+/* ------- MATH ------- */
+/* ------- GET ON WITH YOUR BAD SELF ------- */
+/* apply a natural box layout model to all elements */
+/* line 47, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/* line 51, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+body {
+  background: url("../../../images/green_bg.jpg") no-repeat center center fixed;
+  width: 100%;
+  min-height: 100%;
+  font-family: "Open Sans", Arial, sans-serif;
+  font-size: 1.05em;
+  line-height: 1.8em; }
+
+/* line 61, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+body.logged-in {
+  top: 32px; }
+
+/* line 66, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+header {
+  height: auto;
+  overflow: auto; }
+
+/* line 72, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#home-container {
+  width: 80%;
+  margin: 0px auto;
+  font-size: 1.05em;
+  background: #fff;
+  position: relative;
+  border: 1px solid white;
+  margin-top: 90px;
+  padding: 30px; }
+
+/* line 87, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#home-container.container-logged-in {
+  margin-top: 122px; }
+
+/* line 92, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#nav-container {
+  margin: 0 auto;
+  text-align: center;
+  font-family: "Josefin Slab", "Georgia", cursive;
+  width: 100%;
+  height: 75px;
+  background: #fec947;
+  top: 0;
+  position: fixed;
+  z-index: 1000;
+  margin-bottom: 90px;
+  border: 1px solid blue; }
+
+/* line 111, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.nav-logged-in {
+  top: 32px !important;
+  margin-bottom: 122px !important; }
+
+/* line 117, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+nav {
+  width: 80%;
+  margin: 0 auto;
+  height: auto;
+  overflow: auto; }
+
+/* line 125, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+nav ul {
+  float: right; }
+
+/* line 130, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+nav li {
+  display: inline-block; }
+
+/* line 136, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.main-nav {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-top: 15px; }
+
+/* line 145, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em; }
+
+/* line 152, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.main-nav.last {
+  margin-right: 0 !important; }
+
+/* line 157, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#logo-home img {
+  width: 165px;
+  height: auto;
+  padding-top: 7px;
+  display: inline-block;
+  position: relative;
+  float: left; }
+
+/* line 168, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+p {
+  margin-bottom: 30px; }
+
+/* line 175, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+footer {
+  margin-top: 20px;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 0.75em; }
