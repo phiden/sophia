@@ -23,6 +23,9 @@ CONTENTS:
 ---------------------------------------------------------------------------------------------------------- */
 
 @import "css/reset.css";
+@import url('css/screen.css');
+@import url('css/print.css');
+@import url('css/ie.css');
 
 div,
 article,
@@ -59,7 +62,7 @@ h2,
 h3, 
 h4, 
 h5, 
-h6 					{ font-weight:bold; /* This helps to identify headings at the initial build stage, but you should write something more precise later on */ }
+h6 					{ /* This helps to identify headings at the initial build stage, but you should write something more precise later on */ }
 
 /* ---------------------------------------------------------------------------------------------------------- 
 03 Media queries (using a mobile-first approach) ------------------------------------------------------------
