@@ -15,22 +15,18 @@
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
+<?php query_posts( "cat=5&order=ASC" ); ?>
 <?php if ( have_posts() ): ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-	<?php if ( in_category( 'intro' )) { ?>
-	
-	
-		<article class='intro'>
+	<div class='homepage'>
+		<article>
 			<h2><a href="<?php echo get_post_meta( get_the_ID(), 'link', true ) ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			<?php the_content(); ?>
 		
 		</article>
-	
-	
-	<?php } ?>
-	
+	</div>
 <?php endwhile; ?>
 
 

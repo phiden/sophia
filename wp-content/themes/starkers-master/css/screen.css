@@ -65,25 +65,25 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* ------- MATH ------- */
 /* ------- GET ON WITH YOUR BAD SELF ------- */
 /* apply a natural box layout model to all elements */
-/* line 47, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 48, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 52, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 53, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 h1, h2 {
   font-family: "Raleway Dots", Helvetica, Arial, sans-serif; }
 
-/* line 57, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 58, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 h1 {
   font-size: 6em; }
 
-/* line 62, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 63, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 h1 a {
   text-decoration: none; }
 
-/* line 67, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 68, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 body {
   background: url("../../../images/green_bg.jpg") no-repeat center center fixed;
   width: 100%;
@@ -92,20 +92,20 @@ body {
   font-size: 1.05em;
   line-height: 1.8em; }
 
-/* line 77, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 78, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 body.logged-in {
   top: 32px; }
 
-/* line 82, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 83, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 header {
   text-align: center;
   margin-top: 20%; }
 
-/* line 88, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 89, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 header h1 {
   margin-bottom: .5em; }
 
-/* line 93, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 94, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #home-container {
   width: 80%;
   margin: 0px auto;
@@ -116,38 +116,38 @@ header h1 {
   margin-top: 90px;
   padding: 30px; }
 
-/* line 108, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 109, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 nav {
   width: 80%;
   margin: 0 auto;
   height: auto;
   overflow: auto; }
 
-/* line 116, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 117, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 nav ul {
   float: right; }
 
-/* line 121, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 122, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 nav li {
   display: inline-block; }
 
-/* line 127, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 128, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav {
   margin-left: 20px;
   margin-right: 20px;
   padding-top: 15px; }
 
-/* line 136, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 137, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav a {
   color: white;
   text-decoration: none;
   font-size: 1.5em; }
 
-/* line 143, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 144, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav.last {
   margin-right: 0 !important; }
 
-/* line 148, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 149, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #logo-home img {
   width: 165px;
   height: auto;
@@ -156,11 +156,23 @@ nav li {
   position: relative;
   float: left; }
 
-/* line 159, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 160, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 p {
   margin-bottom: 30px; }
 
-/* line 166, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 165, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.homepage {
+  min-height: 200px;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey; }
+
+/* line 173, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.homepage article {
+  width: 80%;
+  border: 1px solid red;
+  margin: 0 auto; }
+
+/* line 180, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 footer {
   position: relative;
   text-align: center;
@@ -168,7 +180,7 @@ footer {
   margin-top: 20px;
   padding-top: 20px; }
 
-/* line 176, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 190, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #footer-content {
   width: 100%;
   position: fixed;
