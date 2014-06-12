@@ -134,17 +134,21 @@ nav li {
   padding-top: 15px; }
 
 /* line 131, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.main-nav a img {
+  vertical-align: middle; }
+
+/* line 135, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav a {
   color: #444444;
   text-decoration: none;
   font-size: 1.5em;
   font-family: "Pompiere", Helvetica, Arial, sans-serif; }
 
-/* line 139, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 143, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav.last {
   margin-right: 0 !important; }
 
-/* line 144, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 148, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #logo-home img {
   width: 165px;
   height: auto;
@@ -153,23 +157,23 @@ nav li {
   position: relative;
   float: left; }
 
-/* line 155, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 159, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 p {
   margin-bottom: 30px; }
 
-/* line 160, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 164, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .homepage {
   min-height: 200px;
   border-top: 1px solid grey;
   border-bottom: 1px solid grey; }
 
-/* line 168, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 172, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .homepage article {
   width: 80%;
   border: 1px solid red;
   margin: 0 auto; }
 
-/* line 175, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 179, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 footer {
   position: relative;
   text-align: center;
@@ -177,9 +181,9 @@ footer {
   margin-top: 20px;
   padding-top: 20px; }
 
-/* line 185, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 189, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #footer-content {
   width: 100%;
-  position: fixed;
-  bottom: 0;
+  /*position:fixed;
+  bottom:0;*/
   font-size: 0.75em; }

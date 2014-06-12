@@ -21,8 +21,9 @@
 <?php while ( have_posts() ) : the_post(); ?>
 
 	<div class='homepage'>
+	
 		<article>
-			<h2><a href="<?php echo get_post_meta( get_the_ID(), 'link', true ) ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+			<h2 id="<?php echo get_post_meta(get_the_ID(), 'link', true) ?>"><a href="<?php echo get_post_meta( get_the_ID(), 'link', true ) ?>" rel="bookmark"><?php the_title(); ?></a></h2>
 			<?php the_content(); ?>
 		
 		</article>
