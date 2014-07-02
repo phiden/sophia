@@ -1,9 +1,6 @@
 	
 	<footer>
-	
-		
-		
-		<div id="footer-content">
+	<div id="footer-content">
 		
 		<div id="contact">
 			
