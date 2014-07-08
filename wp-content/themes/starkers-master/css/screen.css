@@ -203,15 +203,16 @@ footer {
   font-size: 0.75em; }
 
 /* PAGES */
-/* line 217, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
-#skills-list {
+/* line 218, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#skills-list,
+#work-list {
   text-align: center;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
   font-size: 0.85em; }
 
-/* line 226, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 227, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #skills-list li {
   display: inline-block;
   width: 24.7%;
@@ -219,7 +220,8 @@ footer {
   padding-left: 30px;
   padding-right: 30px; }
 
-/* line 236, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 238, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#work-list-tag,
 #skills-list-tag {
   font-size: 0.85em;
   text-align: center;
@@ -227,3 +229,15 @@ footer {
   width: 100%;
   padding-top: 30px;
   padding-bottom: 30px; }
+
+/* line 248, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#work-list li {
+  display: inline-block;
+  width: 32%;
+  vertical-align: top;
+  padding-left: 30px;
+  padding-right: 30px; }
+
+/* line 258, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#work-list li img {
+  width: 100%; }
