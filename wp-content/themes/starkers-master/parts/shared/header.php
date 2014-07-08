@@ -10,7 +10,7 @@
 		
 		<li class="main-nav"><a href="museums">museum nerd.</a></li>
 		<li class="main-nav"><a href="writer">writer.</a></li>
-		<li class="main-nav"><a href="writer">r&eacute;sum&eacute;.</a></li>
+		<li class="main-nav"><a href="resume">r&eacute;sum&eacute;.</a></li>
 		<li class="main-nav"><a href="#contact">contact me!</a></li>
 		
 	</nav>
