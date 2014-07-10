@@ -23,7 +23,7 @@
 	<div id="designer-intro">
 	I've been working as a UI/UX designer in some capacity since 2007.
 	
-		<ul id="designer-nav">
+		<!--<ul id="designer-nav">
 		
 			<li><a href=#>2007</a></li>
 			<li><a href=#>2008</a></li>
@@ -33,9 +33,11 @@
 			<li><a href=#>2012</a></li>
 			<li><a href=#>2013</a></li>
 			
-		</ul> 
-	</div>
-
+		</ul> -->
+		
+			</div>
+	<br>Filter by year: <?php echo do_shortcode( '[searchandfilter taxonomies="post_tag" submit_label="Filter" hide_empty="1" all_items_labels="All work"] ' ); ?>
+	
 <article>
 
 	<?php query_posts( "cat=12" ); ?>

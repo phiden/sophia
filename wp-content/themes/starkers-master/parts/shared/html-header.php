@@ -12,7 +12,6 @@
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 		<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/img/favicon.ico"/>
 		
-		<link href='http://fonts.googleapis.com/css?family=Raleway|Raleway+Dots' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Pompiere' rel='stylesheet' type='text/css'>
 		
 		<?php wp_head(); ?>
