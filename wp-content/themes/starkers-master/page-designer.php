@@ -18,19 +18,46 @@
 ?>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/html-header', 'parts/shared/header' ) ); ?>
 
-<div class="homepage">
+<div class="homepage" id="designer-page">
+
+	<div id="designer-intro">
+	I've been working as a UI/UX designer in some capacity since 2007.
+	
+		<ul id="designer-nav">
+		
+			<li><a href=#>2007</a></li>
+			<li><a href=#>2008</a></li>
+			<li><a href=#>2009</a></li>
+			<li><a href=#>2010</a></li>
+			<li><a href=#>2011</a></li>
+			<li><a href=#>2012</a></li>
+			<li><a href=#>2013</a></li>
+			
+		</ul> 
+	</div>
+
+<article>
 
 	<?php query_posts( "cat=12" ); ?>
 	<?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-
-		<article>
+	
+		<?php 
 		
-			<h2><?php the_title(); ?></h2>
+			$img = get_post_meta( get_the_ID(), 'fullsize', true); 
+			$link = get_post_meta( get_the_ID(), 'link', true); 
+		
+		?>
+		
+	<div class="work-card">		
+		
+			<h2><?php the_title(); ?></h2><p class="light">Posted: <?php the_date(); ?></p>
+			<img src=<?php print $img; ?>/>
 			<?php the_content(); ?>
 	
-		</article>
+	</div>
+		
 	<?php endwhile; ?>
-
+</article>
 
 </div>
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer' ) ); ?>

@@ -260,18 +260,29 @@ footer {
 #work-list li img {
   width: 100%; }
 
+/* line 285, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.work-card {
+  border: 1px solid green;
+  display: inline-block;
+  vertical-align: top;
+  width: 33.1%; }
+
+/* line 293, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.work-card img {
+  width: 100%; }
+
 /* RESUME */
-/* line 287, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 300, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume {
   height: auto;
   overflow: auto;
   display: block; }
 
-/* line 293, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 306, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume-ancillary {
   width: 29%; }
 
-/* line 298, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 311, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume-experience {
   width: 65%;
   padding-right: 30px; }
