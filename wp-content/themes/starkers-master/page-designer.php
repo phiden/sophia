@@ -34,9 +34,10 @@
 			<li><a href=#>2013</a></li>
 			
 		</ul> -->
+		<br>Filter by year: <?php echo do_shortcode( '[searchandfilter taxonomies="post_tag" submit_label="Filter" hide_empty="1" all_items_labels="All work"] ' ); ?>
 		
-			</div>
-	<br>Filter by year: <?php echo do_shortcode( '[searchandfilter taxonomies="post_tag" submit_label="Filter" hide_empty="1" all_items_labels="All work"] ' ); ?>
+	</div>
+	
 	
 <article>
 
@@ -54,7 +55,7 @@
 		
 			<h2><?php the_title(); ?></h2><p class="light">Posted: <?php the_date(); ?></p>
 			<img src=<?php print $img; ?>/>
-			<?php the_content(); ?>
+			<div class='the-content'><?php the_content(); ?></div>
 	
 	</div>
 		
