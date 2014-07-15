@@ -260,25 +260,31 @@ footer {
 
 /* line 282, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #work-list li img {
-  width: 100%; }
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  -webkit-mask-image: url("http://localhost:8888/sophia/wp-content/themes/starkers-master/img/circle.svg");
+  -webkit-mask-size: 98%;
+  -webkit-mask-repeat: no-repeat; }
 
-/* line 287, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 293, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .work-card {
   /*@include test-border(green);*/
   display: inline-block;
   vertical-align: top;
   width: 33.1%; }
 
-/* line 295, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 301, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .work-card img {
   width: 100%; }
 
-/* line 300, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 306, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .the-content {
   padding-left: 30px;
   padding-right: 30px; }
 
-/* line 306, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 312, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #designer-intro {
   width: 80%;
   text-align: center;
@@ -288,17 +294,17 @@ footer {
   padding-bottom: 30px; }
 
 /* RESUME */
-/* line 318, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 324, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume {
   height: auto;
   overflow: auto;
   display: block; }
 
-/* line 324, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 330, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume-ancillary {
   width: 29%; }
 
-/* line 329, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 335, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume-experience {
   width: 65%;
   padding-right: 30px; }
