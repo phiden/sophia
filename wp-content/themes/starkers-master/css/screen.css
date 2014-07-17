@@ -112,7 +112,7 @@ body {
   width: 100%;
   min-height: 100%;
   font-family: "Raleway", Helvetica, Arial, sans-serif;
-  font-size: 1.05em;
+  font-size: 0.95em;
   line-height: 1.8em; }
 
 /* line 106, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
@@ -122,13 +122,14 @@ body.logged-in {
 /* line 111, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 header {
   text-align: center;
-  margin-top: 1%; }
+  background-size: cover;
+  background-image: url(ui/red.jpg); }
 
-/* line 117, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 118, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 header h1 {
   margin-bottom: .5em; }
 
-/* line 122, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 123, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #home-container {
   width: 80%;
   margin: 0px auto;
@@ -139,50 +140,55 @@ header h1 {
   margin-top: 90px;
   padding: 30px; }
 
-/* line 137, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 138, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 nav {
   width: 80%;
   margin: 0 auto;
   height: auto;
   overflow: auto; }
 
-/* line 146, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 147, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 nav li {
   display: inline-block; }
 
-/* line 152, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 153, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav {
   margin-left: 20px;
   margin-right: 20px;
   padding-top: 2px;
   padding-bottom: 30px; }
 
-/* line 161, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 162, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav-logo a img {
   vertical-align: middle;
   width: 40%;
   height: auto;
+  padding-top: 30px;
   margin-left: 1%;
   margin-right: 1%; }
 
-/* line 171, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 173, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav-logo a,
 .main-nav a {
-  color: #444444;
+  color: white;
   text-decoration: none;
   font-size: 1.05em;
   font-weight: 200;
   font-family: "Raleway", Helvetica, Arial, sans-serif; }
 
-/* line 180, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 182, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.main-nav a:hover {
+  border-bottom: 2px solid white; }
+
+/* line 187, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav-logo a {
   font-size: 3em; }
 
-/* line 185, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 192, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .main-nav.last {
   margin-right: 0 !important; }
 
-/* line 190, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 197, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #logo-home img {
   width: 165px;
   height: auto;
@@ -191,23 +197,35 @@ nav li {
   position: relative;
   float: left; }
 
-/* line 201, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 208, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 p {
   margin-bottom: 30px; }
 
-/* line 206, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 213, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .homepage {
   border-top: 1px solid grey;
   border-bottom: 1px solid grey;
   background: #f7f7f7; }
 
-/* line 214, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 221, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .homepage article {
   width: 80%;
   border: 1px solid red;
   margin: 0 auto; }
 
-/* line 221, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 228, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.homepage article h2 {
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  font-family: "Raleway", Helvetica, Arial, sans-serif; }
+
+/* line 236, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+.homepage article h2 a {
+  text-decoration: none;
+  color: #fec947; }
+
+/* line 242, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 footer {
   position: relative;
   text-align: center;
@@ -215,7 +233,7 @@ footer {
   margin-top: 20px;
   padding-top: 20px; }
 
-/* line 231, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 251, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #footer-content {
   width: 100%;
   /*position:fixed;
@@ -223,16 +241,15 @@ footer {
   font-size: 0.75em; }
 
 /* PAGES */
-/* line 242, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 262, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #skills-list,
 #work-list {
   text-align: center;
   width: 100%;
   margin-left: auto;
-  margin-right: auto;
-  font-size: 0.85em; }
+  margin-right: auto; }
 
-/* line 251, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 270, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #skills-list li {
   display: inline-block;
   width: 24.7%;
@@ -240,17 +257,17 @@ footer {
   padding-left: 30px;
   padding-right: 30px; }
 
-/* line 262, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 281, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #work-list-tag,
 #skills-list-tag {
-  font-size: 0.85em;
+  font-size: 0.95em;
   text-align: center;
   background-color: #f2f2f2;
   width: 100%;
   padding-top: 30px;
   padding-bottom: 30px; }
 
-/* line 272, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 291, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #work-list li {
   display: inline-block;
   width: 32%;
@@ -258,7 +275,7 @@ footer {
   padding-left: 30px;
   padding-right: 30px; }
 
-/* line 282, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 301, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #work-list li img {
   text-align: center;
   margin-left: auto;
@@ -268,23 +285,29 @@ footer {
   -webkit-mask-size: 98%;
   -webkit-mask-repeat: no-repeat; }
 
-/* line 293, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 312, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .work-card {
   /*@include test-border(green);*/
   display: inline-block;
   vertical-align: top;
   width: 33.1%; }
 
-/* line 301, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 320, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .work-card img {
-  width: 100%; }
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  -webkit-mask-image: url("http://localhost:8888/sophia/wp-content/themes/starkers-master/img/circle.svg");
+  -webkit-mask-size: 98%;
+  -webkit-mask-repeat: no-repeat; }
 
-/* line 306, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 331, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .the-content {
   padding-left: 30px;
   padding-right: 30px; }
 
-/* line 312, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 337, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #designer-intro {
   width: 80%;
   text-align: center;
@@ -294,17 +317,17 @@ footer {
   padding-bottom: 30px; }
 
 /* RESUME */
-/* line 324, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 349, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume {
   height: auto;
   overflow: auto;
   display: block; }
 
-/* line 330, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 355, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume-ancillary {
   width: 29%; }
 
-/* line 335, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 360, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume-experience {
   width: 65%;
   padding-right: 30px; }
