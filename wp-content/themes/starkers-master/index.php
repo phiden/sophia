@@ -20,6 +20,10 @@
 <?php query_posts( "cat=5&order=ASC" ); ?>
 <?php if ( have_posts() ): ?>
 
+	<article id="user-info">
+		<?php the_author_meta('user_description', 1); ?>
+	</article>
+	
 <?php while ( have_posts() ) : the_post(); ?>
 
 	
