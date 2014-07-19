@@ -21,7 +21,8 @@
 <?php if ( have_posts() ): ?>
 
 	<article id="user-info">
-		<?php the_author_meta('user_description', 1); ?>
+		<a id="user-info-dismiss"><img src="wp-content/themes/starkers-master/css/ui/close-icon-black.png"/></a>
+		<div><?php the_author_meta('user_description', 1); ?></div>
 	</article>
 	
 <?php while ( have_posts() ) : the_post(); ?>
