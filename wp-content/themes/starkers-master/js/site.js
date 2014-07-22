@@ -1,16 +1,16 @@
 jQuery(document).ready(function($) {
 
-	// Your JavaScript goes here
+	//hide "I'm hiring clients!" dialog box on click
 	$("#user-info-dismiss").click(function(){ 
 			
 		$("#user-info").slideUp();
 	})
 
+	//implement freetile.js 
 	$("#designer-page article").freetile({
 		
-		animate:true
+		animate:false
 	});
-	
 	
 	//quickie to replace broken images with placekittens for dev purposes.
 	$('.work-card img').each(function() {

@@ -53,10 +53,12 @@
 		
 	<div class="work-card">		
 		
+		<div class='work-card-inner'>
 			<h2><?php the_title(); ?></h2><p class="light">Posted: <?php the_date(); ?></p>
 			<img src=<?php print $img; ?>/>
 			<div class='the-content'><?php the_content(); ?></div>
 	
+		</div>
 	</div>
 		
 	<?php endwhile; ?>
