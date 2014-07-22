@@ -18,3 +18,5 @@
 		<?php wp_head(); ?>
 	</head>
 	<body <?php body_class(); ?>>
+	
+	<div id="mmenu-wrapper"> <!--closed in html footer-->
