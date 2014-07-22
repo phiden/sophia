@@ -34,6 +34,11 @@ jQuery(document).ready(function($) {
 			$("#mobile-nav-trigger a").click(function() {
 		         $("#mobile-nav").trigger("open.mm");
 		    });
+		    
+		    $('.main-nav a').click(function() {
+			    
+			    $('#mobile-nav').trigger('close.mm');
+		    })
 		    			
 		} else {
 			

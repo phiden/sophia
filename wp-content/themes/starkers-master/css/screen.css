@@ -478,18 +478,29 @@ footer {
   html.mm-opening #mm-blocker,
   html.mm-opening .mm-fixed-top,
   html.mm-opening .mm-fixed-bottom {
-    left: 60% !important; } }
-@media only screen and (min-width: 601px) and (max-width: 800px) {
+    left: 60% !important; }
+
+  /* resume */
   /* line 555, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  #resume-ancillary,
+  #resume-experience {
+    width: 100%;
+    float: none;
+    padding-right: 0;
+    padding-left: 0;
+    height: auto;
+    overflow: auto; } }
+@media only screen and (min-width: 601px) and (max-width: 800px) {
+  /* line 568, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .work-card {
     width: 50%; }
 
-  /* line 561, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 574, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .work-card-inner {
     margin-left: 7.5px;
     margin-right: 7.5px; } }
 @media only screen and (min-width: 801px) {
-  /* line 571, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 584, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .work-card-inner {
     margin-left: 7.5px;
     margin-right: 7.5px; } }
