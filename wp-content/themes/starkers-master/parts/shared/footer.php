@@ -4,9 +4,8 @@
 		
 		<div id="contact">
 			
-			CONTACT ME!
+			<?php echo do_shortcode('[cscf-contact-form]'); ?>
 			
-		
 		</div>
 		
 			&copy;<?php echo date("Y"); ?> <?php bloginfo( 'name' ); ?>. all rights reserved.
