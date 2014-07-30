@@ -4,6 +4,7 @@
 		
 		<div id="contact">
 			
+			<h2>Contact me!</h2>
 			<?php echo do_shortcode('[cscf-contact-form]'); ?>
 			
 		</div>

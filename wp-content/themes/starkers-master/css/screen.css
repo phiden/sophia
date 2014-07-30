@@ -90,7 +90,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 /* line 81, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 h1, h2 {
-  font-family: "Pompiere", Helvetica, Arial, sans-serif; }
+  font-family: "Raleway", Helvetica, Arial, sans-serif; }
 
 /* line 86, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 h1 {
@@ -364,6 +364,11 @@ footer {
 
 /* RESUME */
 /* line 412, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#resume-wrapper {
+  text-align: center;
+  margin: 0 auto; }
+
+/* line 419, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume {
   height: auto;
   overflow: auto;
@@ -371,7 +376,14 @@ footer {
   padding-top: 15px;
   text-align: center; }
 
-/* line 421, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 428, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#design-work-wrapper {
+  text-align: center;
+  margin: 0 auto;
+  padding-bottom: 30px; }
+
+/* line 436, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#design-work,
 #download-resume {
   font-weight: 400;
   margin-top: 20px;
@@ -382,24 +394,24 @@ footer {
   border-radius: 6px 6px 6px 6px;
   padding: 10px; }
 
-/* line 434, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 449, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume-ancillary {
   width: 29%;
   text-align: left; }
 
-/* line 440, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 455, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume-experience {
   width: 65%;
   text-align: left;
   padding-right: 30px; }
 
-/* line 448, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 463, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #resume-skills h2,
 #resume-experience h2 {
   padding-top: 0 !important; }
 
 /* USER INFO */
-/* line 454, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 469, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #user-info {
   font-size: 1.575em;
   line-height: 1.5em;
@@ -411,18 +423,18 @@ footer {
   -moz-border-radius: 20px;
   border-radius: 20px; }
 
-/* line 469, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 484, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #user-info div {
   width: 90%;
   padding: 30px;
   text-align: center;
   z-index: 101; }
 
-/* line 477, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 492, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #user-info a {
   color: white; }
 
-/* line 482, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 497, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #user-info-dismiss {
   float: right;
   padding-right: 10px;
@@ -430,21 +442,21 @@ footer {
   z-index: 102; }
 
 /* --------------------------------------- footer - form ------------------------------------------- */
-/* line 492, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 507, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 #frmCSCF {
   width: 30%;
   margin: 0 auto;
   padding-bottom: 30px; }
 
-/* line 499, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 514, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .form-group label {
   display: none; }
 
-/* line 504, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 519, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 .form-group div {
   display: inline; }
 
-/* line 511, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+/* line 526, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
 input#cscf_name,
 input#cscf_email,
 textarea#cscf_message {
@@ -452,55 +464,59 @@ textarea#cscf_message {
   margin-top: 7.5px;
   margin-bottom: 7.5px; }
 
+/* line 533, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+#contact h2 {
+  padding-bottom: 30px; }
+
 /* --------------------------------------- RESPONSIVE ------------------------------------------- */
 @media only screen and (min-width: 320px) and (max-width: 600px) {
-  /* line 523, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 542, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .work-card {
     width: 100%;
     margin-bottom: 15px; }
 
-  /* line 530, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 549, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .work-card-inner {
     margin-left: 0;
     margin-right: 0;
     padding-bottom: 15px; }
 
-  /* line 537, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 556, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .homepage article {
     width: 90%; }
 
   /* homepage */
-  /* line 544, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 563, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #user-info {
     font-size: 1.05em; }
 
-  /* line 549, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 568, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #user-info-dismiss {
     margin-top: 10px; }
 
-  /* line 554, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 573, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #user-info div {
     margin-top: 15px;
     margin-bottom: 15px;
     padding: 15px;
     width: 100%; }
 
-  /* line 564, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 583, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #work-list li,
   #skills-list li {
     width: 100%; }
 
   /* mobile nav & menu */
-  /* line 570, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 589, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .main-nav-logo a img {
     width: 80%; }
 
-  /* line 575, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 594, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #mobile-nav-trigger {
     padding-bottom: 20px;
     margin-top: -20px; }
 
-  /* line 581, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 600, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #mobile-nav-trigger a {
     font-weight: 400;
     color: white;
@@ -510,24 +526,24 @@ textarea#cscf_message {
     border-radius: 6px 6px 6px 6px;
     padding: 10px; }
 
-  /* line 592, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 611, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .main-nav a {
     font-weight: 400;
     color: #ba152d; }
 
-  /* line 599, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 618, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .main-nav a:active,
   .main-nav a:hover {
     border-bottom: 2px solid #ba152d; }
 
   /* these override mmenu.css */
-  /* line 605, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 624, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .mm-menu {
     width: 60% !important;
     padding-top: 30px !important;
     background-color: white !important; }
 
-  /* line 615, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 634, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   html.mm-opening .mm-page,
   html.mm-opening #mm-blocker,
   html.mm-opening .mm-fixed-top,
@@ -535,11 +551,11 @@ textarea#cscf_message {
     left: 60% !important; }
 
   /* resume */
-  /* line 622, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 641, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #resume h3 {
     font-size: 1em; }
 
-  /* line 629, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 648, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #resume-ancillary,
   #resume-experience {
     width: 100%;
@@ -550,31 +566,31 @@ textarea#cscf_message {
     overflow: auto; }
 
   /* contact form */
-  /* line 642, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 661, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #frmCSCF {
     width: 90%;
     margin: 0 auto;
     padding-bottom: 30px; }
 
-  /* line 649, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 668, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .cscfForm p {
     margin-left: 7.5px;
     margin-right: 7.5px; } }
 @media only screen and (min-width: 601px) and (max-width: 800px) {
-  /* line 658, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 677, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .work-card {
     width: 50%; }
 
-  /* line 664, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 683, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .work-card-inner {
     margin-left: 7.5px;
     margin-right: 7.5px; }
 
-  /* line 670, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 689, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   #skills-list li {
     width: 45%; } }
 @media only screen and (min-width: 801px) {
-  /* line 679, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
+  /* line 698, ../../../../../../Sites/sass/sophia_2014/sass/screen.scss */
   .work-card-inner {
     margin-left: 7.5px;
     margin-right: 7.5px; } }

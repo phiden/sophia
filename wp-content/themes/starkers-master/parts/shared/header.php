@@ -7,11 +7,11 @@
 	
 	<nav id="global-nav">
 	
-		<li class="main-nav"><a href="developer">front-end developer.</a></li>
-		<li class="main-nav"><a href="designer">designer.</a></li>
-		<li class="main-nav"><a href="maker">maker.</a></li>
+		<li class="main-nav"><a href="http://localhost:8888/sophia/#developer">front-end developer.</a></li>
+		<li class="main-nav"><a href="http://localhost:8888/sophia/#designer">designer.</a></li>
+		<li class="main-nav"><a href="http://localhost:8888/sophia/#maker">maker.</a></li>
 		
-		<li class="main-nav"><a href="resume">r&eacute;sum&eacute;.</a></li>
+		<li class="main-nav"><a href="http://localhost:8888/sophia/#resume">r&eacute;sum&eacute;.</a></li>
 		<li class="main-nav"><a href="#contact">contact me!</a></li>
 		
 	</nav>
