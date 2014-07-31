@@ -297,7 +297,7 @@ footer {
   margin-left: auto;
   margin-right: auto;
   width: 100%;
-  -webkit-mask-image: url("http://localhost:8888/sophia/wp-content/themes/starkers-master/img/circle.svg");
+  -webkit-mask-image: url("http://sophiadengo.com/wp-content/themes/starkers-master/img/circle.svg");
   -webkit-mask-size: 98%;
   -webkit-mask-repeat: no-repeat; }
 
@@ -344,7 +344,7 @@ footer {
   margin-right: auto;
   margin-bottom: 15px;
   width: 90%;
-  -webkit-mask-image: url("http://localhost:8888/sophia/wp-content/themes/starkers-master/img/circle.svg");
+  -webkit-mask-image: url("http://sophiadengo.com/wp-content/themes/starkers-master/img/circle.svg");
   -webkit-mask-size: 100%;
   -webkit-mask-repeat: no-repeat; }
 
