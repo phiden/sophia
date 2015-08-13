@@ -26,6 +26,15 @@ class wordfenceHash {
 	private $only = false;
 	private $totalForks = 0;
 
+	/**
+	 * @param string $striplen
+	 * @param string $path
+	 * @param array $only
+	 * @param array $themes
+	 * @param array $plugins
+	 * @param wfScanEngine $engine
+	 * @throws Exception
+	 */
 	public function __construct($striplen, $path, $only, $themes, $plugins, $engine){
 		$this->striplen = $striplen;
 		$this->path = $path;
@@ -65,7 +74,6 @@ class wordfenceHash {
 			throw new Exception("Invalid response from Wordfence servers.");
 		}
 		wordfence::statusEnd($fetchCoreHashesStatus, false, true);
-
 		if($this->malwareEnabled){
 			$malwarePrefixStatus = wordfence::statusStart("Fetching list of known malware files from Wordfence");
 			$malwareData = $engine->api->getStaticURL('/malwarePrefixes.bin');
@@ -89,7 +97,6 @@ class wordfenceHash {
 		}
 		if(! is_readable($path)){
 			throw new Exception("Could not read directory " . $this->path . " to do scan.");
-			exit();
 		}
 		$this->haveIssues = array(
 			'core' => false,
@@ -208,10 +215,10 @@ class wordfenceHash {
 			wordfence::status(4, 'info', "Skipping file larger than max size: $realFile");
 			return;
 		}
-		if(function_exists('memory_get_usage')){
-                       wordfence::status(4, 'info', "Scanning: $realFile (Mem:" . sprintf('%.1f', memory_get_usage(true) / (1024 * 1024)) . "M)");
+		if (function_exists('memory_get_usage')) {
+			wordfence::status(4, 'info', "Scanning: $realFile (Mem:" . sprintf('%.1f', memory_get_usage(true) / (1024 * 1024)) . "M)");
 		} else {
-                       wordfence::status(4, 'info', "Scanning: $realFile");
+			wordfence::status(4, 'info', "Scanning: $realFile");
 		}
 		$wfHash = self::wfHash($realFile); 
 		if($wfHash){

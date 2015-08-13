@@ -142,6 +142,7 @@ class wfCache {
 
 		$file = self::fileFromRequest( ($_SERVER['HTTP_HOST'] ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME']), $_SERVER['REQUEST_URI']);
 		self::makeDirIfNeeded($file);
+		// self::writeCacheDirectoryHtaccess();
 		$append = "";
 		$appendGzip = "";
 		if(wfConfig::get('addCacheComment', false)){
@@ -154,18 +155,18 @@ class wfCache {
 			$append .= "Time created on server: " . date('Y-m-d H:i:s T') . ". ";
 			$append .= "Is HTTPS page: " . (self::isHTTPSPage() ? 'HTTPS' : 'no') . ". ";
 			$append .= "Page size: " . strlen($buffer) . " bytes. ";
-			$append .= "Host: " . ($_SERVER['HTTP_HOST'] ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME']) . ". ";
-			$append .= "Request URI: " . $_SERVER['REQUEST_URI'] . " ";
+			$append .= "Host: " . ($_SERVER['HTTP_HOST'] ? wp_kses($_SERVER['HTTP_HOST'], array()) : wp_kses($_SERVER['SERVER_NAME'], array())) . ". ";
+			$append .= "Request URI: " . wp_kses($_SERVER['REQUEST_URI'], array()) . " ";
 			$appendGzip = $append . " Encoding: GZEncode -->\n";
 			$append .= " Encoding: Uncompressed -->\n";
 		}
 
-		file_put_contents($file, $buffer . $append, LOCK_EX);
-		chmod($file, 0655);
+		@file_put_contents($file, $buffer . $append, LOCK_EX);
+		chmod($file, 0644);
 		if(self::$cacheType == 'falcon'){ //create gzipped files so we can send precompressed files
 			$file .= '_gzip';
-			file_put_contents($file, gzencode($buffer . $appendGzip, 9), LOCK_EX);
-			chmod($file, 0655);
+			@file_put_contents($file, gzencode($buffer . $appendGzip, 9), LOCK_EX);
+			chmod($file, 0644);
 		}
 		return $buffer;
 	}
@@ -193,7 +194,7 @@ class wfCache {
 	public static function makeDirIfNeeded($file){
 		$file = preg_replace('/\/[^\/]*$/', '', $file);
 		if(! is_dir($file)){
-			mkdir($file, 0755, true);
+			@mkdir($file, 0755, true);
 		}
 	}
 	public static function logout(){
@@ -219,8 +220,38 @@ class wfCache {
 			}
 			return $msg;
 		}
-		return false; //Everything is OK
+		self::removeCacheDirectoryHtaccess();
+		return false;
+		// return self::writeCacheDirectoryHtaccess(); //Everything is OK
 	}
+
+	/**
+	 * Returns false on success to match wfCache::cacheDirectoryTest
+	 *
+	 * @see wfCache::cacheDirectoryTest
+	 *
+	 * @return bool|string
+	 */
+	public static function writeCacheDirectoryHtaccess() {
+		$cacheDir = WP_CONTENT_DIR . '/wfcache/';
+		if (!file_exists($cacheDir . '.htaccess') && !@file_put_contents($cacheDir . '.htaccess', 'Deny from all', LOCK_EX)) {
+			$err = error_get_last();
+			$msg = "We could not write to the file $cacheDir" . ".htaccess.";
+			if($err){
+				$msg .= " The error was: " . $err['message'];
+			}
+			return $msg;
+		}
+		return false;
+	}
+
+	public static function removeCacheDirectoryHtaccess() {
+		$cacheDir = WP_CONTENT_DIR . '/wfcache/';
+		if (file_exists($cacheDir . '.htaccess')) {
+			unlink($cacheDir . '.htaccess');
+		}
+	}
+
 	public static function action_publishPost($id){
 		$perm = get_permalink($id);
 		self::deleteFileFromPermalink($perm);
@@ -383,7 +414,7 @@ class wfCache {
 			if(strpos($dir, 'wfcache/') === false){
 				self::$lastRecursiveDeleteError = "Not deleting directory $dir because it appears to be in the wrong path.";
 				self::$cacheStats['totalErrors']++;
-				return; //Safety check that we're in a subdir of the cache
+				return false; //Safety check that we're in a subdir of the cache
 			}
 			if(@rmdir($dir)){
 				self::$cacheStats['dirsDeleted']++;
@@ -396,7 +427,6 @@ class wfCache {
 		} else {
 			return true;
 		}
-		return true;
 	}
 	public static function addHtaccessCode($action){
 		if($action != 'add' && $action != 'remove'){
@@ -548,6 +578,11 @@ EOT;
 		self::updateBlockedIPs('add'); //Fail silently if .htaccess is not readable. Will fall back to old blocking via WP
 		wp_schedule_single_event(time() + 300, 'wordfence_update_blocked_IPs');
 	}
+
+	/**
+	 * @param $action
+	 * @return bool|string|void
+	 */
 	public static function updateBlockedIPs($action){ //'add' or 'remove'
 		if(wfConfig::get('cacheType') != 'falcon'){ return; }
 
@@ -601,13 +636,23 @@ EOT;
 					$arr = explode('|', $r);
 					$range = isset($arr[0]) ? $arr[0] : false;
 					$browser = isset($arr[1]) ? $arr[1] : false;
+					$referer = isset($arr[2]) ? $arr[2] : false;
 
-					if($range && $browser){
-						continue; //Don't process browser and range combos
-					} else if($range){
-						$ips = explode('-', $range);
-						$cidrs = wfUtils::rangeToCIDRs($ips[0], $ips[1]);
-						$hIPs = wfUtils::inet_ntoa($ips[0]) . ' - ' . wfUtils::inet_ntoa($ips[1]);
+					if($range){
+						if($browser || $referer){ continue; } //We don't allow combos in falcon
+
+						list($start_range, $end_range) = explode('-', $range);
+						if (preg_match('/[\.:]/', $start_range)) {
+							$start_range = wfUtils::inet_pton($start_range);
+							$end_range = wfUtils::inet_pton($end_range);
+						} else {
+							$start_range = wfUtils::inet_pton(long2ip($start_range));
+							$end_range = wfUtils::inet_pton(long2ip($end_range));
+						}
+
+						$cidrs = wfUtils::rangeToCIDRs($start_range, $end_range);
+
+						$hIPs = wfUtils::inet_ntop($start_range) . ' - ' . wfUtils::inet_ntop($end_range);
 						if(sizeof($cidrs) > 0){
 							$lines[] = '#Start of blocking code for IP range: ' . $hIPs . "\n";
 							foreach($cidrs as $c){
@@ -616,10 +661,18 @@ EOT;
 							$lines[] = '#End of blocking code for IP range: ' . $hIPs . "\n";
 						}
 					} else if($browser){
+						if($range || $referer){ continue; }
 						$browserLines[] = "\t#Blocking code for browser pattern: $browser\n";
 						$browser = preg_replace('/([\-\_\.\+\!\@\#\$\%\^\&\(\)\[\]\{\}\/])/', "\\\\$1", $browser);
 						$browser = preg_replace('/\*/', '.*', $browser);
 						$browserLines[] = "\tSetEnvIf User-Agent " . $browser . " WordfenceBadBrowser=1\n";
+						$browserAdded = true;
+					} else if($referer){
+						if($browser || $range){ continue; }
+						$browserLines[] = "\t#Blocking code for referer pattern: $referer\n";
+						$referer = preg_replace('/([\-\_\.\+\!\@\#\$\%\^\&\(\)\[\]\{\}\/])/', "\\\\$1", $referer);
+						$referer = preg_replace('/\*/', '.*', $referer);
+						$browserLines[] = "\tSetEnvIf Referer " . $referer . " WordfenceBadBrowser=1\n";
 						$browserAdded = true;
 					}
 				}

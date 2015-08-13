@@ -5,8 +5,8 @@ License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: simple, contact, form, contact button, contact form, contact form plugin, akismet, contacts, contacts form plugin, contact me, feedback form, bootstrap, twitter, google, reCAPTCHA, ajax, secure
 Requires at least: 3.3
-Tested up to: 3.9
-Stable tag: 4.3.4
+Tested up to: 4.1.1
+Stable tag: 4.4.4
 
 A clean and simple AJAX contact form with Google reCAPTCHA, Twitter Bootstrap markup and Akismet spam filtering.
 
@@ -131,6 +131,8 @@ Here is a list of things that you can change
 
 *   **!NEW! Override 'From' Address**: If you tick this and then fill in the 'From Address:' box then all email will be sent from the given address NOT from the email address given by the form filler.
 
+*   **!NEW! Option to allow enquiry to email themselves a copy of the message.
+
 == Screenshots ==
 1. Contact Form With reCAPTCHA
 2. Contact Form Without reCAPTCHA
@@ -201,6 +203,23 @@ the reCAPTCHA for the contact form will be displayed correctly but not in the co
 The comments form will never validate due to no supplied reCAPTCHA code.
 
 == Changelog ==
+= 4.4.4 =
+* Added Serbian translation thanks to [Borisa Djuraskovic](http://www.webhostinghub.com "Borisa Djuraskovic")
+* Added Slovenian translation thanks to Bekim Lutolli
+* Fixed some 'notice' errors
+* Recaptcha styling workaround for twenty fifteen theme
+* Remove empty divs from view
+= 4.4.3 =
+* Remove branding
+= 4.4.2 =
+* Akismet tweak only log as spam if akismet_result = 'true'
+* Updated Turkish translations thanks again to [Abdullah Manaz](http://manaz.net "Abdullah Manaz")
+* Added Indonesian translations thanks to Beny Hirmansyah
+= 4.4.0 =
+* Fixed XSS issue
+= 4.4.1 =
+* Add option for enquiry to email themselves a copy of the message
+* Update to Polish translation thanks to Radosław “Robaczek” Rak
 = 4.3.4 =
 * Added the wordpress page of contact form to the email
 * Removed link in main contact form view
@@ -311,6 +330,16 @@ Polish thanks to Patryk Peas
 
 
 == Upgrade Notice ==
+= 4.4.4 =
+Added languages, css fix for twenty fifteen theme, remove 'notice' errors, remove empty divs
+= 4.4.3 =
+Tested up to 4.1
+= 4.4.2 =
+Akismet tweak and translation updates
+= 4.4.1 =
+Fixed XSS issue
+= 4.4.0 =
+Added option for enquiry to email themselves a copy of the message plus Polish translation updated
 = 4.3.4 =
 Email now includes page url of contact form, removed link in main contact form view
 = 4.3.3 =
