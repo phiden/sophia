@@ -31,36 +31,35 @@
 /* line 51, ../phi_sass/sass/screen.scss */
 html {
   width: 100%;
-  background-color: #f3f1f2;
 }
 
-/* line 58, ../phi_sass/sass/screen.scss */
+/* line 57, ../phi_sass/sass/screen.scss */
 body {
   width: 100%;
   font-family: "proxima-nova", Helvetica, sans-serif;
 }
 
-/* line 64, ../phi_sass/sass/screen.scss */
+/* line 63, ../phi_sass/sass/screen.scss */
 h1, h2 {
   font-family: "ambroise-firmin-std", Georgia, serif;
   letter-spacing: .01em;
 }
 
-/* line 71, ../phi_sass/sass/screen.scss */
+/* line 70, ../phi_sass/sass/screen.scss */
 a {
   color: #f65f3a;
 }
 
-/* line 76, ../phi_sass/sass/screen.scss */
+/* line 75, ../phi_sass/sass/screen.scss */
 a:active,
 a:hover {
   border-bottom: 3px solid white;
 }
 
 /* HEADERS */
-/* line 84, ../phi_sass/sass/screen.scss */
+/* line 83, ../phi_sass/sass/screen.scss */
 #name-bar {
-  background: #a4a09f;
+  background: #f3f1f2;
   padding-top: 20px;
   padding-bottom: 3px;
   padding-left: 40px;
@@ -68,14 +67,15 @@ a:hover {
   overflow: auto;
 }
 
-/* line 94, ../phi_sass/sass/screen.scss */
+/* line 93, ../phi_sass/sass/screen.scss */
 #name-bar h1 a:hover {
   border: 0;
 }
 
-/* line 100, ../phi_sass/sass/screen.scss */
+/* line 99, ../phi_sass/sass/screen.scss */
 #name-bar a {
-  color: white;
+  color: #f65f3a;
+  font-weight: 600;
   text-decoration: none;
   letter-spacing: .01em;
 }
@@ -122,15 +122,21 @@ a:hover {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  -webkit-box-shadow: 2px 2px 0 0 #f65f3a;
-  box-shadow: 2px 2px 0 0 #f65f3a;
-  background-color: rgba(247, 144, 113, 0.8);
+  -webkit-box-shadow: 2px 2px 0 0 #f79071;
+  box-shadow: 2px 2px 0 0 #f79071;
+  background-color: #f3f1f2;
   margin: 0 auto;
   text-align: center;
   margin-bottom: 30px;
 }
 
 /* line 155, ../phi_sass/sass/screen.scss */
+#skills-list {
+  height: auto;
+  overflow: auto;
+}
+
+/* line 161, ../phi_sass/sass/screen.scss */
 #skills-list li h3 {
   font-size: 1.75em;
   font-weight: 600;
@@ -139,7 +145,17 @@ a:hover {
   color: white;
 }
 
-/* line 165, ../phi_sass/sass/screen.scss */
+/* line 171, ../phi_sass/sass/screen.scss */
+#skills-list-tag {
+  border-left: 10px solid #f79071;
+  border-right: 10px solid #f79071;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.25em;
+  background-color: rgba(247, 144, 113, 0.5);
+}
+
+/* line 181, ../phi_sass/sass/screen.scss */
 article.row {
   margin: 0 auto;
   text-align: left;
@@ -148,7 +164,13 @@ article.row {
   width: 90%;
 }
 
-/* line 175, ../phi_sass/sass/screen.scss */
+/* line 191, ../phi_sass/sass/screen.scss */
 article.row h2 {
   text-align: center;
+}
+
+/* 400 and up */
+/* Retina Display */
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  /*retina*/
 }

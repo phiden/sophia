@@ -4,7 +4,7 @@ $charcoal: #a4a09f;
 $pearl: #f3f1f2;
 $tangerine: #f65f3a;
 $peach: rgba(247, 144, 113, 1);
-$peach-transparent: rgba(247, 144, 113, .8);
+$peach-transparent: rgba(247, 144, 113, .5);
 
 
 @mixin circle {
@@ -12,8 +12,8 @@ $peach-transparent: rgba(247, 144, 113, .8);
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	border-radius: 50%;
-	-webkit-box-shadow: 2px 2px 0 0 #f65f3a;
-	box-shadow: 2px 2px 0 0 #f65f3a;
+	-webkit-box-shadow: 2px 2px 0 0 $peach;
+	box-shadow: 2px 2px 0 0 $peach;
 
 }
 
@@ -51,7 +51,6 @@ $peach-transparent: rgba(247, 144, 113, .8);
 html {
 	
 	width:100%;
-	background-color:$pearl;
 	
 }
 
@@ -83,7 +82,7 @@ a:hover {
 
 #name-bar {
 	
-	background:$charcoal;
+	background:$pearl;
 	padding-top:20px;
 	padding-bottom:3px;
 	padding-left:40px;
@@ -99,7 +98,8 @@ a:hover {
 
 #name-bar a {
 	
-	color:white;
+	color:$tangerine;
+	font-weight:600;
 	text-decoration: none;
 	letter-spacing: .01em;
 }
@@ -146,10 +146,16 @@ a:hover {
 	height:150px;
 	width:150px;
 	@include circle;
-	background-color:$peach-transparent;
+	background-color:$pearl;
 	margin:0 auto;
 	text-align: center;
 	margin-bottom:30px;
+}
+
+#skills-list {
+	
+	height:auto;
+	overflow:auto;
 }
 
 #skills-list li h3 {
@@ -160,6 +166,16 @@ a:hover {
 	vertical-align: middle;
 	color:white;
 	
+}
+
+#skills-list-tag {
+	
+	border-left:10px solid $peach;
+	border-right:10px solid $peach;
+	padding:20px;
+	text-align: center;
+	font-size:1.25em;
+	background-color:$peach-transparent;
 }
 
 article.row {
@@ -175,4 +191,18 @@ article.row {
 article.row h2 {
 	
 	text-align: center;
+}
+
+
+/* 400 and up */
+@media screen and (min-width:400px) {
+
+					
+
+}
+
+/* Retina Display */
+@media screen and (-webkit-min-device-pixel-ratio:2) {
+
+		/*retina*/
 }

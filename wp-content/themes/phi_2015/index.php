@@ -17,24 +17,65 @@
 
 <div class='homepage'>
 
-<?php query_posts( "category_name=home&order=ASC" ); ?>
-
-<?php if ( have_posts() ): ?>
-	<?php while ( have_posts() ) : the_post(); ?>
+	<!-- The Query -->
+	<?php $main_query = new WP_Query( array( 'category_name' => 'home', 'order' => 'ASC') ); ?>
+	
+	<?php 
 		
-			<article class='row'>
+		//$main_query = new WP_Query( array('category_name' => 'design', 'posts_per_page' => 4 ));
+		
+		// The Loop
+		if ( $main_query->have_posts() ) { ?>
+		
+			<?php while ( $main_query->have_posts() ) { ?>
 				
-				<h2 id="<?php echo get_post_meta(get_the_ID(), 'link', true) ?>"><?php the_title(); ?></h2>
-				<?php the_content(); ?>
+				<?php $main_query->the_post(); ?>
+				
+				<article class='row'>
+				
+					<h2 id="<?php echo get_post_meta(get_the_ID(), 'link', true) ?>"><?php the_title(); ?></h2>
+					
+					<?php if (get_post_meta(get_the_ID(), 'link', true) == 'designer') { ?>
+
+                                        this is where designer stuff goes.
+                    <?php 
+                        // The Query
+                        $the_query = new WP_Query( array('category_name' => 'design', 'posts_per_page' => 4 ));
+                        //$query = new WP_Query( array( 'posts_per_page' => 5, 'offset' => 3 ) );
+
+                        // The Loop
+                        if ( $the_query->have_posts() ) {
+                            echo '<ul>';
+                            while ( $the_query->have_posts() ) {
+                                $the_query->the_post();
+                                echo '<li>' . get_the_title() . '</li>';
+                                                            }
+                            echo '</ul>';
+                        } else {
+                            // no posts found
+                        }
+                        ?>
+
+
+                <?php } else if(get_post_meta(get_the_ID(), 'link', true) == 'maker') { ?>
+
+                    this is where maker stuff goes.
+
+
+                <?php } else { ?>
+
+                    <?php the_content(); ?>
+
+                <?php } ?>
+				
+				</article>
+				
+			<?php } ?> <!-- close endwhile -->
 			
-			</article>
+		<?php } ?>
 		
-	<?php endwhile; ?>
-
-<?php else: ?>
-	<h2>No posts to display</h2>
-<?php endif; ?>
-
+		
+		
 </div>
 
 <?php Starkers_Utilities::get_template_parts( array( 'parts/shared/footer','parts/shared/html-footer') ); ?>
