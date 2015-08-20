@@ -1,4 +1,6 @@
-	
+
+	</section> <!-- closes #global-container -->
+		
 	<footer>
 	<div id="footer-content">
 		

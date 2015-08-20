@@ -1,19 +1,20 @@
 <header>
-	<!--<h1>"><?php bloginfo( 'name' ); ?></a></h1>-->
 	
+	<div id='name-bar'>
+		<h1 class='f_left'><a href="<?php echo home_url(); ?>">sophia dengo</a></h1>
+		
+		<nav class='f_right'>
+			<li class="main-nav"><a href="#developer">front-end developer.</a></li>
+			<li class="main-nav"><a href="#designer">designer.</a></li>
+			<li class="main-nav"><a href="#maker">maker.</a></li>	
+			<li class="main-nav"><a href="#resume">r&eacute;sum&eacute;.</a></li>
+			<li class="main-nav"><a href="http://github.com/phiden">on Github.</a></li>
+			<li class="main-nav"><a href="#contact">contact me.</a></li>
+		</nav>
+	</div>
 	
-	<li class="main-nav-logo"><a href="<?php echo home_url(); ?>"><img src="http://localhost:8888/sophia/wp-content/themes/starkers-master/img/signature-white.png"/></a></li>
 	<div id="mobile-nav-trigger" class='hidden'><a href=#mobile-menu>MENU</a></div>
 	
-	<nav id="global-nav">
-	
-		<li class="main-nav"><a href="http://localhost:8888/sophia/#developer">front-end developer.</a></li>
-		<li class="main-nav"><a href="http://localhost:8888/sophia/#designer">designer.</a></li>
-		<li class="main-nav"><a href="http://localhost:8888/sophia/#maker">maker.</a></li>
-		
-		<li class="main-nav"><a href="http://localhost:8888/sophia/#resume">r&eacute;sum&eacute;.</a></li>
-		<li class="main-nav"><a href="#contact">contact me!</a></li>
-		
-	</nav>
-	
 </header>
+
+<section id='global-container'> <!-- closes in footer -->

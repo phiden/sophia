@@ -1,6 +1,178 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/* Variables */
 
-@import "compass/reset";
+$charcoal: #a4a09f;
+$pearl: #f3f1f2;
+$tangerine: #f65f3a;
+$peach: rgba(247, 144, 113, 1);
+$peach-transparent: rgba(247, 144, 113, .8);
+
+
+@mixin circle {
+	
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	-webkit-box-shadow: 2px 2px 0 0 #f65f3a;
+	box-shadow: 2px 2px 0 0 #f65f3a;
+
+}
+
+/* TYPEKIT CONTROL */
+
+.wf-loading {
+	visibility: hidden;
+}
+
+.wf-active  {
+    visibility: visible;
+}
+
+/* END TYPEKIT CONTROL */
+
+/* UTILITIES */
+
+.f_right {
+	
+	float:right;
+}
+
+.f_left {
+	
+	float:left;
+}
+
+.hidden {
+	
+	display:none;
+}
+
+/* BASICS */
+
+html {
+	
+	width:100%;
+	background-color:$pearl;
+	
+}
+
+body {
+	
+	width:100%;
+	font-family: "proxima-nova", Helvetica, sans-serif;
+}
+
+h1, h2 {
+	
+	font-family: "ambroise-firmin-std", Georgia, serif;
+	letter-spacing: .01em;
+	
+}
+
+a {
+	
+	color:$tangerine;
+}
+
+a:active,
+a:hover {
+	
+	border-bottom:3px solid white;
+}
+
+/* HEADERS */
+
+#name-bar {
+	
+	background:$charcoal;
+	padding-top:20px;
+	padding-bottom:3px;
+	padding-left:40px;
+	height:auto;
+	overflow:auto;
+}
+
+#name-bar h1 a:hover {
+	
+	border:0; 
+	
+}
+
+#name-bar a {
+	
+	color:white;
+	text-decoration: none;
+	letter-spacing: .01em;
+}
+
+#name-bar a:hover {
+	
+	border-bottom:3px solid $peach;
+}
+
+#name-bar nav {
+	
+	padding-top:30px;
+	padding-bottom:3px;
+	padding-right:40px;
+	vertical-align: baseline;
+}
+
+.main-nav {
+	
+	display:inline-block;
+	padding-right:20px;
+}
+
+.main-nav:last-child {
+	
+	padding-right:0;
+}
+
+#global-container {
+	
+	padding-right:40px;
+	padding-left:40px;
+	height:auto;
+	overflow: auto;
+	margin:0 auto;
+	text-align: center;
+	
+}
+
+/* HOMEPAGE */
+
+.circle-bg {
+	
+	height:150px;
+	width:150px;
+	@include circle;
+	background-color:$peach-transparent;
+	margin:0 auto;
+	text-align: center;
+	margin-bottom:30px;
+}
+
+#skills-list li h3 {
+	
+	font-size:1.75em;
+	font-weight:600;
+	padding-top:60px;
+	vertical-align: middle;
+	color:white;
+	
+}
+
+article.row {
+	
+	margin:0 auto;
+	text-align: left;
+	padding-top:30px;
+	padding-bottom:30px;
+	width:90%;
+
+}
+
+article.row h2 {
+	
+	text-align: center;
+}

@@ -17,29 +17,22 @@
 
 <div class='homepage'>
 
-<?php query_posts( "cat=5&order=ASC" ); ?>
+<?php query_posts( "category_name=home&order=ASC" ); ?>
+
 <?php if ( have_posts() ): ?>
-
-	<article id="user-info">
-		<a id="user-info-dismiss"><img src="wp-content/themes/starkers-master/css/ui/close-icon-black.png"/></a>
-		<div><?php the_author_meta('user_description', 1); ?></div>
-	</article>
-	
-<?php while ( have_posts() ) : the_post(); ?>
-
-	
-	
-		<article>
-			<h2 id="<?php echo get_post_meta(get_the_ID(), 'link', true) ?>"><?php the_title(); ?></h2>
-			<?php the_content(); ?>
+	<?php while ( have_posts() ) : the_post(); ?>
 		
-		</article>
-	
-<?php endwhile; ?>
-
+			<article class='row'>
+				
+				<h2 id="<?php echo get_post_meta(get_the_ID(), 'link', true) ?>"><?php the_title(); ?></h2>
+				<?php the_content(); ?>
+			
+			</article>
+		
+	<?php endwhile; ?>
 
 <?php else: ?>
-<h2>No posts to display</h2>
+	<h2>No posts to display</h2>
 <?php endif; ?>
 
 </div>
