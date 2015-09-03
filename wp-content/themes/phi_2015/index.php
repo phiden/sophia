@@ -31,42 +31,56 @@
 				
 				<?php $main_query->the_post(); ?>
 				
-				<article class='row'>
+				<article class='row twelve columns'>
 				
 					<h2 id="<?php echo get_post_meta(get_the_ID(), 'link', true) ?>"><?php the_title(); ?></h2>
 					
 					<?php if (get_post_meta(get_the_ID(), 'link', true) == 'designer') { ?>
 
-                                        this is where designer stuff goes.
-                    <?php 
-                        // The Query
-                        $the_query = new WP_Query( array('category_name' => 'design', 'posts_per_page' => 4 ));
-                        //$query = new WP_Query( array( 'posts_per_page' => 5, 'offset' => 3 ) );
+            <?php $the_query = new WP_Query( array('category_name' => 'design', 'posts_per_page' => 4 )); ?>
+           
+            	<?php if ( $the_query->have_posts() ) { ?>
+	            <?php while ( $the_query->have_posts() ) { ?>
+	                
+	              <?php $the_query->the_post(); ?>
+	              
+	              <div class='three columns'>
+	              	
+	              	<h4><?php the_title(); ?></h4>
+	              	<div class='homepage-image'><?php the_post_thumbnail(); ?></div>
+	              
+	              </div>
+              
+              <?php } ?> <!-- close while -->
+                
+          <?php } ?> <!-- close if query has posts -->
+            
+        <?php } else if(get_post_meta(get_the_ID(), 'link', true) == 'maker') { ?>
 
-                        // The Loop
-                        if ( $the_query->have_posts() ) {
-                            echo '<ul>';
-                            while ( $the_query->have_posts() ) {
-                                $the_query->the_post();
-                                echo '<li>' . get_the_title() . '</li>';
-                                                            }
-                            echo '</ul>';
-                        } else {
-                            // no posts found
-                        }
-                        ?>
+            this is where maker stuff goes.
+            <?php $the_query = new WP_Query( array('category_name' => 'maker', 'posts_per_page' => 4 )); ?>
+           
+            <?php if ( $the_query->have_posts() ) { ?>
+	            <?php while ( $the_query->have_posts() ) { ?>
+	                
+	              <?php $the_query->the_post(); ?>
+	              
+	              <div class='three columns'>
+	              	
+	              	<?php the_title(); ?>
+	              
+	              </div>
+              
+              <?php } ?> <!-- close while -->
+                
+          <?php } ?> <!-- close if query has posts -->
 
 
-                <?php } else if(get_post_meta(get_the_ID(), 'link', true) == 'maker') { ?>
+        <?php } else { ?>
 
-                    this is where maker stuff goes.
+            <?php the_content(); ?>
 
-
-                <?php } else { ?>
-
-                    <?php the_content(); ?>
-
-                <?php } ?>
+        <?php } ?>
 				
 				</article>
 				

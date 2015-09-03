@@ -6,6 +6,10 @@ $tangerine: #f65f3a;
 $peach: rgba(247, 144, 113, 1);
 $peach-transparent: rgba(247, 144, 113, .5);
 
+$pink: #c5006e;
+$light-pink: rgba(240, 175, 209, 1);
+$t_pink: rgba(199, 0, 110, .5);
+
 
 @mixin circle {
 	
@@ -15,6 +19,13 @@ $peach-transparent: rgba(247, 144, 113, .5);
 	-webkit-box-shadow: 2px 2px 0 0 $peach;
 	box-shadow: 2px 2px 0 0 $peach;
 
+}
+
+@mixin circle-mask {
+	-webkit-mask-image: url("../img/circle.svg");
+  -webkit-mask-size: 98%;
+  -webkit-mask-repeat: no-repeat;
+	
 }
 
 /* TYPEKIT CONTROL */
@@ -69,7 +80,8 @@ h1, h2 {
 
 a {
 	
-	color:$tangerine;
+	color:$pink;
+	font-weight:600;
 }
 
 a:active,
@@ -98,7 +110,7 @@ a:hover {
 
 #name-bar a {
 	
-	color:$tangerine;
+	color:$pink;
 	font-weight:600;
 	text-decoration: none;
 	letter-spacing: .01em;
@@ -106,7 +118,7 @@ a:hover {
 
 #name-bar a:hover {
 	
-	border-bottom:3px solid $peach;
+	border-bottom:3px solid $pink;
 }
 
 #name-bar nav {
@@ -130,8 +142,9 @@ a:hover {
 
 #global-container {
 	
-	padding-right:40px;
-	padding-left:40px;
+	width:80%;
+	padding-right:20px;
+	padding-left:20px;
 	height:auto;
 	overflow: auto;
 	margin:0 auto;
@@ -170,12 +183,12 @@ a:hover {
 
 #skills-list-tag {
 	
-	border-left:10px solid $peach;
-	border-right:10px solid $peach;
+	border-left:10px solid $pink;
+	border-right:10px solid $pink;
 	padding:20px;
 	text-align: center;
 	font-size:1.25em;
-	background-color:$peach-transparent;
+	background-color:$t_pink;
 }
 
 article.row {
@@ -193,7 +206,22 @@ article.row h2 {
 	text-align: center;
 }
 
+article .columns:first-child {
+	
+	margin-left:0 !important;
+}
 
+.homepage-image {
+	
+	@include circle-mask;
+	
+}
+
+.homepage-image img {
+	
+	width:100%;
+	height:auto;
+}
 /* 400 and up */
 @media screen and (min-width:400px) {
 
