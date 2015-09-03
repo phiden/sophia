@@ -27,38 +27,96 @@
   display: none;
 }
 
+/* line 60, ../phi_sass/sass/screen.scss */
+.outer {
+  display: table;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 67, ../phi_sass/sass/screen.scss */
+.inner {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* line 72, ../phi_sass/sass/screen.scss */
+.light {
+  font-weight: 300;
+}
+
 /* BASICS */
-/* line 62, ../phi_sass/sass/screen.scss */
+/* line 79, ../phi_sass/sass/screen.scss */
 html {
   width: 100%;
 }
 
-/* line 68, ../phi_sass/sass/screen.scss */
+/* line 85, ../phi_sass/sass/screen.scss */
 body {
   width: 100%;
   font-family: "proxima-nova", Helvetica, sans-serif;
 }
 
-/* line 74, ../phi_sass/sass/screen.scss */
+/* line 91, ../phi_sass/sass/screen.scss */
+header {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background-image: url("../img/earth-from-space.jpg");
+  background-position-y: -50px;
+  background-size: cover;
+  text-align: center;
+}
+
+/* line 103, ../phi_sass/sass/screen.scss */
+header h1 {
+  text-align: center;
+  vertical-align: center;
+  margin: auto 0;
+  color: white;
+}
+
+/* line 111, ../phi_sass/sass/screen.scss */
+header h5 {
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 2.05rem;
+}
+
+/* line 118, ../phi_sass/sass/screen.scss */
+header p {
+  color: white;
+  text-align: center;
+}
+
+/* line 124, ../phi_sass/sass/screen.scss */
+header a {
+  text-decoration: none;
+  color: white;
+}
+
+/* line 131, ../phi_sass/sass/screen.scss */
 h1, h2 {
-  font-family: "ambroise-firmin-std", Georgia, serif;
+  font-family: "proxima-nova", Helvetica, sans-serif;
+  font-weight: 800;
   letter-spacing: .01em;
 }
 
-/* line 81, ../phi_sass/sass/screen.scss */
+/* line 139, ../phi_sass/sass/screen.scss */
 a {
   color: #c5006e;
   font-weight: 600;
 }
 
-/* line 87, ../phi_sass/sass/screen.scss */
+/* line 145, ../phi_sass/sass/screen.scss */
 a:active,
 a:hover {
   border-bottom: 3px solid white;
 }
 
 /* HEADERS */
-/* line 95, ../phi_sass/sass/screen.scss */
+/* line 153, ../phi_sass/sass/screen.scss */
 #name-bar {
   background: #f3f1f2;
   padding-top: 20px;
@@ -68,12 +126,12 @@ a:hover {
   overflow: auto;
 }
 
-/* line 105, ../phi_sass/sass/screen.scss */
+/* line 163, ../phi_sass/sass/screen.scss */
 #name-bar h1 a:hover {
   border: 0;
 }
 
-/* line 111, ../phi_sass/sass/screen.scss */
+/* line 169, ../phi_sass/sass/screen.scss */
 #name-bar a {
   color: #c5006e;
   font-weight: 600;
@@ -81,12 +139,12 @@ a:hover {
   letter-spacing: .01em;
 }
 
-/* line 119, ../phi_sass/sass/screen.scss */
+/* line 177, ../phi_sass/sass/screen.scss */
 #name-bar a:hover {
   border-bottom: 3px solid #c5006e;
 }
 
-/* line 124, ../phi_sass/sass/screen.scss */
+/* line 182, ../phi_sass/sass/screen.scss */
 #name-bar nav {
   padding-top: 30px;
   padding-bottom: 3px;
@@ -94,18 +152,18 @@ a:hover {
   vertical-align: baseline;
 }
 
-/* line 132, ../phi_sass/sass/screen.scss */
+/* line 190, ../phi_sass/sass/screen.scss */
 .main-nav {
   display: inline-block;
   padding-right: 20px;
 }
 
-/* line 138, ../phi_sass/sass/screen.scss */
+/* line 196, ../phi_sass/sass/screen.scss */
 .main-nav:last-child {
   padding-right: 0;
 }
 
-/* line 143, ../phi_sass/sass/screen.scss */
+/* line 201, ../phi_sass/sass/screen.scss */
 #global-container {
   width: 80%;
   padding-right: 20px;
@@ -117,7 +175,7 @@ a:hover {
 }
 
 /* HOMEPAGE */
-/* line 157, ../phi_sass/sass/screen.scss */
+/* line 215, ../phi_sass/sass/screen.scss */
 .circle-bg {
   height: 150px;
   width: 150px;
@@ -132,13 +190,13 @@ a:hover {
   margin-bottom: 30px;
 }
 
-/* line 168, ../phi_sass/sass/screen.scss */
+/* line 226, ../phi_sass/sass/screen.scss */
 #skills-list {
   height: auto;
   overflow: auto;
 }
 
-/* line 174, ../phi_sass/sass/screen.scss */
+/* line 232, ../phi_sass/sass/screen.scss */
 #skills-list li h3 {
   font-size: 1.75em;
   font-weight: 600;
@@ -147,7 +205,7 @@ a:hover {
   color: white;
 }
 
-/* line 184, ../phi_sass/sass/screen.scss */
+/* line 242, ../phi_sass/sass/screen.scss */
 #skills-list-tag {
   border-left: 10px solid #c5006e;
   border-right: 10px solid #c5006e;
@@ -157,7 +215,7 @@ a:hover {
   background-color: rgba(199, 0, 110, 0.5);
 }
 
-/* line 194, ../phi_sass/sass/screen.scss */
+/* line 252, ../phi_sass/sass/screen.scss */
 article.row {
   margin: 0 auto;
   text-align: left;
@@ -166,24 +224,24 @@ article.row {
   width: 90%;
 }
 
-/* line 204, ../phi_sass/sass/screen.scss */
+/* line 262, ../phi_sass/sass/screen.scss */
 article.row h2 {
   text-align: center;
 }
 
-/* line 209, ../phi_sass/sass/screen.scss */
+/* line 267, ../phi_sass/sass/screen.scss */
 article .columns:first-child {
   margin-left: 0 !important;
 }
 
-/* line 214, ../phi_sass/sass/screen.scss */
+/* line 272, ../phi_sass/sass/screen.scss */
 .homepage-image {
   -webkit-mask-image: url("../img/circle.svg");
   -webkit-mask-size: 98%;
   -webkit-mask-repeat: no-repeat;
 }
 
-/* line 220, ../phi_sass/sass/screen.scss */
+/* line 278, ../phi_sass/sass/screen.scss */
 .homepage-image img {
   width: 100%;
   height: auto;
