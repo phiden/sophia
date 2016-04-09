@@ -5,7 +5,7 @@ Plugin URI: http://www.designsandcode.com/447/wordpress-search-filter-plugin-for
 Description: Search and Filtering system for Pages, Posts, Categories, Tags and Taxonomies
 Author: Designs & Code
 Author URI: http://www.designsandcode.com/
-Version: 1.2.7
+Version: 1.2.9
 Text Domain: searchandfilter
 License: GPLv2
 */
@@ -16,7 +16,7 @@ License: GPLv2
 * Set up Plugin Globals
 */
 if (!defined('SEARCHANDFILTER_VERSION_NUM'))
-    define('SEARCHANDFILTER_VERSION_NUM', '1.2.7');
+    define('SEARCHANDFILTER_VERSION_NUM', '1.2.9');
 
 if (!defined('SEARCHANDFILTER_THEME_DIR'))
     define('SEARCHANDFILTER_THEME_DIR', ABSPATH . 'wp-content/themes/' . get_template());
@@ -131,7 +131,7 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 				'empty_search_url' => ""
 				
 			), $atts));
-
+			
 			//init `fields`
 			if($fields!=null)
 			{
@@ -359,6 +359,8 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 				
 				if(isset($operators[$i]))
 				{
+					$operators[$i] = strtolower($operators[$i]);
+					
 					if(($operators[$i]!="and")&&($operators[$i]!="or"))
 					{
 						$operators[$i] =  "and"; //else use default - possible typo or use of unknown value
@@ -368,7 +370,6 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 				{
 					$operators[$i] =  "and"; //use default
 				}
-			
 			}
 			
 			//set all form defaults / dropdowns etc
@@ -572,7 +573,7 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 			
 			$this->defaults[SF_FPRE.'post_tag'] = $tags;
 
-			$taxs = array();
+			
 			//loop through all the query vars
 			foreach($wp_query->query as $key=>$val)
 			{
@@ -586,7 +587,9 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 						//$tax_params = explode("+",esc_attr($taxslug));
 						
 						$tax_params = (preg_split("/[,\+ ]/", esc_attr($taxslug))); //explode with 2 delims
-
+						
+						$taxs = array();
+						
 						foreach($tax_params as $tax_param)
 						{
 							$tax = get_term_by("slug",$tax_param, $key);
@@ -675,11 +678,11 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 					//check to see if an operator has been specified - only applies with fields that use multiple selects such as checkboxes or multi selects
 					if(isset($_POST[SF_FPRE.'category_operator']))
 					{
-						if($_POST[SF_FPRE.'category_operator']=="and")
+						if(strtolower($_POST[SF_FPRE.'category_operator'])=="and")
 						{
 							$operator = "+";
 						}
-						else if($_POST[SF_FPRE.'category_operator']=="or")
+						else if(strtolower($_POST[SF_FPRE.'category_operator'])=="or")
 						{
 							$operator = ",";
 						}
@@ -756,11 +759,11 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 					//check to see if an operator has been specified - only applies with fields that use multiple selects such as checkboxes or multi selects
 					if(isset($_POST[SF_FPRE.'post_tag_operator']))
 					{
-						if($_POST[SF_FPRE.'post_tag_operator']=="and")
+						if(strtolower($_POST[SF_FPRE.'post_tag_operator'])=="and")
 						{
 							$operator = "+";
 						}
-						else if($_POST[SF_FPRE.'post_tag_operator']=="or")
+						else if(strtolower($_POST[SF_FPRE.'post_tag_operator'])=="or")
 						{
 							$operator = ",";
 						}
@@ -802,6 +805,7 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 			{
 				foreach($_POST as $key=>$val)
 				{
+					
 					if(!in_array($key, $this->frmreserved))
 					{//if the key is not in the reserved array (ie, on a custom taxonomy - not tags, categories, search term, post type & post date)
 						
@@ -810,12 +814,13 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 						{
 							$key = substr($key, strlen(SF_FPRE));
 						}
-
+						
 						$the_post_tax = $val;
 						
+						$post_tax = array();
 						
 						//make the post an array for easy looping
-						if(!is_array($val))
+						if(!is_array($the_post_tax))
 						{
 							$post_tax[] = $the_post_tax;
 						}
@@ -823,13 +828,14 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 						{
 							$post_tax = $the_post_tax;
 						}
+						
 						$taxarr = array();
 
 						foreach ($post_tax as $tax)
 						{
 							$tax = esc_attr($tax);
-							$taxobj = get_term_by('id',$tax,$key);
-
+							$taxobj = get_term_by('id', $tax, $key);
+							
 							if(isset($taxobj->slug))
 							{
 								$taxarr[] = $taxobj->slug;
@@ -843,11 +849,11 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 							//check to see if an operator has been specified - only applies with fields that use multiple selects such as checkboxes or multi selects
 							if(isset($_POST[SF_FPRE.$key.'_operator']))
 							{
-								if($_POST[SF_FPRE.$key.'_operator']=="and")
+								if(strtolower($_POST[SF_FPRE.$key.'_operator'])=="and")
 								{
 									$operator = "+";
 								}
-								else if($_POST[SF_FPRE.$key.'_operator']=="or")
+								else if(strtolower($_POST[SF_FPRE.$key.'_operator'])=="or")
 								{
 									$operator = ",";
 								}
@@ -861,8 +867,15 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 							
 							//**due to some new wierd rewrite in WordPress, the first taxonomy which get rewritten to /taxonomyname/taxonomyvalue only uses the first value of an array - so do it manually
 							if(get_option('permalink_structure')&&($taxcount==0))
-							{
+							{	
+								$key_taxonomy = get_taxonomy( $key );
+								
 								$tax_path = $key."/".$taxs."/";
+								if((isset($key_taxonomy->rewrite))&&(isset($key_taxonomy->rewrite['slug'])))
+								{
+									$tax_path = $key_taxonomy->rewrite['slug']."/".$taxs."/";
+								}
+										
 								$this->urlparams .= $tax_path;
 							}
 							else
@@ -887,8 +900,6 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 				
 				
 			}
-			
-			
 			
 			/* SEARCH BOX */
 			if((isset($_POST[SF_FPRE.'search']))&&($this->has_form_posted))
@@ -1050,6 +1061,8 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 				}
 			}
 			
+			
+			
 			if($this->has_form_posted)
 			{//if the search has been posted, redirect to the newly formed url with all the right params
 			
@@ -1068,10 +1081,10 @@ if ( ! class_exists( 'SearchAndFilter' ) )
 						exit;
 					}				
 				}
-				
 				wp_redirect((home_url().$this->urlparams));
 				exit;
 			}
+			
 		}
 	
 		public function get_search_filter_form($submitlabel, $search_placeholder, $fields, $types, $labels, $hierarchical, $hide_empty, $show_count, $post_types, $order_by, $order_dir, $operators, $all_items_labels, $empty_search_url, $add_search_param, $class)

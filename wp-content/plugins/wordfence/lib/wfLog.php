@@ -123,23 +123,6 @@ class wfLog {
 
 			//Range blocking was here. Moved to wordfenceClass::veryFirstAction
 
-			if(wfConfig::get('blockFakeBots')){
-				if(wfCrawl::isGooglebot() && (! wfCrawl::verifyCrawlerPTR($this->googlePattern, $IP) )){
-					$this->blockIP($IP, "Fake Google crawler automatically blocked");
-					wordfence::status(2, 'info', "Blocking fake Googlebot at IP $IP");
-				}
-			}
-			if(wfConfig::get('bannedURLs', false)){
-				$URLs = explode(',', wfConfig::get('bannedURLs'));
-				foreach($URLs as $URL){
-					if($_SERVER['REQUEST_URI'] == trim($URL)){
-						$this->blockIP($IP, "Accessed a banned URL.");
-						$this->do503(3600, "Accessed a banned URL.");
-						//exits
-					}
-				}
-			}
-
 			if(wfConfig::get('maxGlobalRequests') != 'DISABLED' && $hitsPerMinute > wfConfig::get('maxGlobalRequests')){ //Applies to 404 or pageview
 				$this->takeBlockingAction('maxGlobalRequests', "Exceeded the maximum global requests per minute for crawlers or humans.");
 			}
@@ -165,11 +148,6 @@ class wfLog {
 					}
 				}
 			}
-			if(wfConfig::get('other_blockBadPOST') == '1' && $_SERVER['REQUEST_METHOD'] == 'POST' && empty($_SERVER['HTTP_USER_AGENT']) && empty($_SERVER['HTTP_REFERER'])){
-				$this->blockIP($IP, "POST received with blank user-agent and referer");
-				$this->do503(3600, "POST received with blank user-agent and referer");
-				//exits
-			}
 			if(isset($_SERVER['HTTP_USER_AGENT']) && wfCrawl::isCrawler($_SERVER['HTTP_USER_AGENT'])){
 				if($type == 'hit' && wfConfig::get('maxRequestsCrawlers') != 'DISABLED' && $hitsPerMinute > wfConfig::get('maxRequestsCrawlers')){
 					$this->takeBlockingAction('maxRequestsCrawlers', "Exceeded the maximum number of requests per minute for crawlers."); //may not exit
@@ -191,70 +169,17 @@ class wfLog {
 	 * @return bool
 	 */
 	public function isWhitelisted($IP) {
-		$wfIPBlock = new wfUserIPRange('69.46.36.[1-32]');
-		if ($wfIPBlock->isIPInRange($IP)) { //IP is in Wordfence's IP block which would prevent our scanning server manually kicking off scans that are stuck
-			return true;
-		}
-		//We now whitelist all private addrs 
-		if (wfUtils::isPrivateAddress($IP)) {
-			return true;
-		}
-		//These belong to sucuri's scanning servers which will get blocked by Wordfence as a false positive if you try a scan. So we whitelisted them.
-		$externalWhite = array('97.74.127.171', '69.164.203.172', '173.230.128.135', '66.228.34.49', '66.228.40.185', '50.116.36.92', '50.116.36.93', '50.116.3.171', '198.58.96.212', '50.116.63.221', '192.155.92.112', '192.81.128.31', '198.58.106.244', '192.155.95.139', '23.239.9.227', '198.58.112.103', '192.155.94.43', '162.216.16.33', '173.255.233.124', '173.255.233.124', '192.155.90.179', '50.116.41.217', '192.81.129.227', '198.58.111.80');
-		if (in_array($IP, $externalWhite)) {
-			return true;
-		}
-		$list = wfConfig::get('whitelisted');
-		if (!$list) {
-			return false;
-		}
-		$list = explode(',', $list);
-		if (sizeof($list) < 1) {
-			return false;
-		}
-		foreach ($list as $whiteIP) {
-			$white_ip_block = new wfUserIPRange($whiteIP);
-			if ($white_ip_block->isIPInRange($IP)) {
+		foreach (wfUtils::getIPWhitelist() as $subnet) {
+			if ($subnet instanceof wfUserIPRange) {
+				if ($subnet->isIPInRange($IP)) {
+					return true;
+				}
+			} elseif (wfUtils::subnetContainsIP($subnet, $IP)) {
 				return true;
 			}
 		}
+
 		return false;
-	}
-
-	/**
-	 * Get an array of static IPs, tuple for a numeric IP range, or a wfUserIPRange object to define and test a range
-	 * like [127-128].0.0.[1-40]
-	 *
-	 * @see wfUserIPRange
-	 * @param null $user_whitelisted
-	 * @return array
-	 */
-	public function getWhitelistedIPs($user_whitelisted = null) {
-		$white_listed_ips = array();
-		// Wordfence's IP block which would prevent our scanning server manually kicking off scans that are stuck
-		$white_listed_ips[] = array(1160651777, 1160651808);
-
-		// Private range
-		$private_range = wfUtils::getPrivateAddrs();
-		foreach ($private_range as $ip_range) {
-			$white_listed_ips[] = array($ip_range[1], $ip_range[2]);
-		}
-
-		// These belong to sucuri's scanning servers which will get blocked by Wordfence as a false positive if you try a scan. So we whitelisted them.
-		$white_listed_ips = array_merge($white_listed_ips, array_map(array('wfUtils', 'inet_pton'), array('97.74.127.171', '69.164.203.172', '173.230.128.135', '66.228.34.49', '66.228.40.185', '50.116.36.92', '50.116.36.93', '50.116.3.171', '198.58.96.212', '50.116.63.221', '192.155.92.112', '192.81.128.31', '198.58.106.244', '192.155.95.139', '23.239.9.227', '198.58.112.103', '192.155.94.43', '162.216.16.33', '173.255.233.124', '173.255.233.124', '192.155.90.179', '50.116.41.217', '192.81.129.227', '198.58.111.80')));
-
-		if ($user_whitelisted === null) {
-			$user_whitelisted = wfConfig::get('whitelisted');
-		}
-
-		if ($user_whitelisted) {
-			$user_whitelisted = explode(',', $user_whitelisted);
-			foreach ($user_whitelisted as $whiteIP) {
-				$white_listed_ips[] = new wfUserIPRange($whiteIP);
-			}
-		}
-
-		return $white_listed_ips;
 	}
 
 	public function unblockAllIPs(){
@@ -281,6 +206,7 @@ class wfLog {
 	 * @return bool
 	 */
 	public function blockRange($blockType, $range, $reason){
+		$reason = stripslashes($reason);
 		$this->getDB()->queryWrite("insert IGNORE into " . $this->ipRangesTable . " (blockType, blockString, ctime, reason, totalBlocked, lastBlocked) values ('%s', '%s', unix_timestamp(), '%s', 0, 0)", $blockType, $range, $reason);
 		wfCache::updateBlockedIPs('add');
 		return true;
@@ -333,6 +259,9 @@ class wfLog {
 			} else {
 				$elem['refererPattern'] = "Allow visitors arriving from all websites";
 			}
+			if (! empty($blockDat[3])) {
+				$elem['hostnamePattern'] = $blockDat[3];
+			}
 			$elem['patternDisabled'] = (wfConfig::get('cacheType') == 'falcon' && $numBlockElements > 1) ? true : false;
 		}
 		return $results;
@@ -380,6 +309,7 @@ class wfLog {
 	}
 	public function lockOutIP($IP, $reason){
 		if($this->isWhitelisted($IP)){ return false; }
+		$reason = stripslashes($reason);
 		$this->getDB()->queryWrite("insert into " . $this->lockOutTable . " (IP, blockedTime, reason) values (%s, unix_timestamp(), '%s') ON DUPLICATE KEY update blockedTime=unix_timestamp(), reason='%s'",
 			wfUtils::inet_pton($IP),
 			$reason,
@@ -712,7 +642,6 @@ class wfLog {
 		}
 	}
 	public function logHitOK(){
-		if(stristr($_SERVER['REQUEST_URI'], 'wp-admin/admin-ajax.php')){ return false; } //Don't log wordpress ajax requests.
 		if(is_admin()){ return false; } //Don't log admin pageviews
 		if(isset($_SERVER['HTTP_USER_AGENT'])){
 			if(preg_match('/WordPress\/' . $this->wp_version . '/i', $_SERVER['HTTP_USER_AGENT'])){ return false; } //Ignore requests generated by WP UA.
@@ -759,6 +688,7 @@ class wfLog {
 			return;
 		}
 		$IPnum = wfUtils::inet_pton($IP);
+		$hostname = null;
 
 		//New range and UA pattern blocking:
 		$r1 = $this->getDB()->querySelect("select id, blockType, blockString from " . $this->ipRangesTable);
@@ -783,6 +713,15 @@ class wfLog {
 					}
 
 					if (strcmp($IPnum, $start_range) >= 0 && strcmp($IPnum, $end_range) <= 0) {
+						$ipRangeBlocked = true;
+					}
+				}
+				if (! empty($bDat[3])) {
+					$ipRange = true; /* We reuse the ipRangeBlocked variable */
+					if ($hostname === null) {
+						$hostname = wfUtils::reverseLookup($IP);
+					}
+					if (preg_match(wfUtils::patternToRegex($bDat[3]), $hostname)) {
 						$ipRangeBlocked = true;
 					}
 				}
@@ -980,7 +919,7 @@ class wfLog {
 			} else if($nb == 'neverBlockUA' || $nb == 'neverBlockVerified'){
 				if(wfCrawl::isGoogleCrawler()){ //Check the UA using regex
 					if($nb == 'neverBlockVerified'){
-						if(wfCrawl::verifyCrawlerPTR($this->googlePattern, wfUtils::getIP())){ //UA check passed, now verify using PTR if configured to
+						if(wfCrawl::isVerifiedGoogleCrawler($this->googlePattern, wfUtils::getIP())){ //UA check passed, now verify using PTR if configured to
 							self::$gbSafeCache[$cacheKey] = false; //This is a verified Google crawler, so no we can't block it
 						} else {
 							self::$gbSafeCache[$cacheKey] = true; //This is a crawler claiming to be Google but it did not verify
