@@ -1,0 +1,134 @@
+//cfa annual base
+var express = require('express');
+var fs = require('fs');
+var Tabletop = require('tabletop');
+
+var _ = require('underscore');
+var cons = require('consolidate');
+var app = express();
+app.locals._ = _;
+
+var getData = require('./getData.js');
+
+var Report;
+getData(function(err,results){
+  Report = results;
+});
+
+function checkData(){
+  if (_.isEmpty(Report)) {
+    getData(function(err,results){
+      Report = results;
+    });
+  } else {
+    // The time when we got the data
+    created = new Date(Report['created']);
+    // How many seconds ago we got the data
+    seconds = Math.floor((new Date() - created) / 1000);
+    console.log('Data is ' + seconds + ' seconds old...')
+    if (seconds > 20) {
+      // More than 5 minutes ago
+      console.log('\nData out of date, getting new data...');
+      getData(function(err,results){
+        Report = results;
+        console.log('We\'ve got data!');
+
+      });
+    }
+  }
+}
+
+app.engine('html', cons.ejs);
+app.set('view engine', 'html');
+app.set('views', __dirname + '/views');
+app.use(express.static('public'));
+
+// =====
+// Routes
+// =====
+
+app.get(['/','/category/:id','/story/:id'], function(req, res, next){
+  if (_.isEmpty(Report)) {
+    res.render('error/loading', {
+      title: 'Loading',
+      partials: {
+        header: 'partials/header',
+        footer: 'partials/footer'
+      }
+    });
+    checkData();
+  } else {
+    next();
+  }
+});
+
+app.get('/', function(req, res){
+
+  res.render('index', {
+    title: 'Home', //what does this do?
+    type: 'home',
+    url: req.originalUrl,
+    data: Report,
+    partials: {
+      header: 'partials/header',
+      footer: 'partials/footer'
+    }
+  });
+});
+
+app.get('/about', function (req, res) {
+  
+  
+  res.render('about', {
+      title: 'about',
+      type: 'about',
+      url: req.originalUrl,
+      requested: req.params.id,
+      data: Report,
+      partials: {
+        header: 'partials/header',
+        footer: 'partials/footer'
+      }
+    });
+  
+})
+
+//hanging on to this in case I can use it later 052216
+app.get('/story/:id', function (req, res) {
+  res.render('story', {
+    requested: req.params.id,
+    type: 'story',
+    url: req.originalUrl,
+    data: Report,
+    partials: {
+      header: 'partials/header',
+      footer: 'partials/footer'
+    }
+  });
+});
+
+app.get('/update', function (req, res) {
+  checkData();
+  res.send('Updating data...');
+});
+
+// =====
+// Error handling
+// =====
+
+// Catch 404
+app.use(function(req, res, next) {
+  res.status(404).render('error/404', {
+   url: req.originalUrl,
+  });
+});
+
+// Catch 500
+app.use(function(error, req, res, next) {
+  res.status(500).render('error/500', {
+    error: error
+  });
+});
+
+app.listen(process.env.PORT || 3000);
+console.log('Express server listening on port 3000');

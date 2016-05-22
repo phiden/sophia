@@ -1,0 +1,31 @@
+<header id="js-header">
+  <div class="logo">
+    <a href="/">
+      <span class="logo__big"></span><span class="logo__small">OAC</span>
+    </a>
+  </div><!---->
+  <nav class="nav">
+    <ul class="u-unstyled u-row">
+
+      <li class="currently">Currently Reading:</li>
+      <% if (data.opener) { %>
+        <% opener = data.opener[0] %>
+        <li class="
+        <% if (title == "Introduction") { %>
+        active
+        <% } %>
+        "><a href="/"><%- opener['category'] %></a></li>
+      <% } %>
+      
+      <% _.each(data['categories'], function(category){ %>
+        <li class="u-row
+        <% if (category['unique-id'] == requested['unique-id']) { %>
+        active
+        <% } %>
+        "><a href="/<%- category['unique-id'] %>"><%- category['category'] %></a></li>
+      <% }); %>
+      
+        
+    </ul>
+  </nav>
+</header>

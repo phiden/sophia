@@ -1,0 +1,103 @@
+<%
+  var requested = _.findWhere(data['categories'], { 'unique-id' : requested });
+  var title = requested['category'];
+  var color = requested['color'];
+  var hero = data['resources'][0];
+
+  console.log('resources:', hero.url);
+
+  function shadeColor(color, percent) {
+    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+    return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+  }
+
+  var darkColor = shadeColor(color, -0.3);
+%>
+
+<% include partials/header.html %>
+<% include partials/nav.html %>
+
+<% if (requested['color']) { %>
+  <style>
+    ul.story__body__content__links li a:before {
+      background-color: <%- requested['color'] %>;
+    }
+    .story__body__header {
+      background-color: <%- requested['color'] %>;
+    }
+  </style>
+<% } %>
+
+<div id="js-main">
+
+
+  <section class="stories" id="<%- requested['unique-id'] %>" style="padding-bottom:0;">
+
+    <!--
+    <div class="opener__image">
+      <img src="<%- hero.url %>" alt="">
+    </div>
+    -->
+
+    <% _.each(data['categories'], function(category){ %>
+      <% if (category['unique-id'] == requested['unique-id']) { %>
+        <div class="intro" style="
+          <% if (category['color']) { %>
+            background-color: <%- category['color'] %>;
+          <% } %>
+        ">
+
+          <div class="container">
+
+            <div class="intro__content">
+              <p class="intro__content__overline">
+                <%- category['category'] %>
+              </p>
+
+              <h1><%- category['headline'] %></h1>
+            </div>
+
+          </div><!-- end .container -->
+        </div><!-- end .intro -->
+
+      <div class="page-content">
+        <%- category['description'] %>
+      </div>
+
+      <% } %>
+    <% });%>
+
+    <div class="resource-body page-content">
+      <% _.each(data['resources'], function(resource){ %>
+        <div class="resource-item <%  if (resource['iconUrl'] !== '') { %>resource-item--with-icon<% } %>">
+          <%  if (resource['iconUrl'] !== '') { %>
+            <div class="resource-item-icon">
+              <img src="<%- resource['iconUrl'] %>" alt="">
+            </div>
+          <% } %>
+          <div class="resource-item-content">
+            <h3><a href='<%-resource["url"] %>'><%- resource['headline'] %></a></h3>
+            <p><%- resource['description'] %></p>
+            <p><a href="<%-resource["url"] %>">Read this resource</a></p>
+          </div>
+        </div>
+      <% }); %>
+    </div><!-- end .resource-body -->
+  </section>
+
+</div> <!-- close #js-main -->
+
+<% include partials/next.html %>
+<% include partials/footer.html %>
+
+<!-- google analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-74938714-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

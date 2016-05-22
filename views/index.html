@@ -1,0 +1,121 @@
+<%
+  var requested = data.opener[0];
+  var hero = data.opener[1];
+
+  //console.log(data.opener);
+
+  var video = data.opener[2];
+  var title = 'Introduction';
+  var color = requested['color'];
+
+  function shadeColor(color, percent) {
+    var f=parseInt(color.slice(1),16),t=percent<0?0:255,p=percent<0?percent*-1:percent,R=f>>16,G=f>>8&0x00FF,B=f&0x0000FF;
+    return "#"+(0x1000000+(Math.round((t-R)*p)+R)*0x10000+(Math.round((t-G)*p)+G)*0x100+(Math.round((t-B)*p)+B)).toString(16).slice(1);
+  }
+
+  var darkColor = shadeColor(color, -0.3);
+%>
+
+<% include partials/header.html %>
+
+<section id="main">
+  		
+  		<div class='star_signs'>
+    		
+    		<h1><img src='img/star_signs.svg'></h1>
+    		<h3>What's your sign? Show it off with a petite pendant!</h3>
+    		<p>Pendant is 1/2" in diameter, made of brass and sterling silver. It hangs from a delicate, 18-inch sterling silver chain.</p>
+      		
+    		<ul>
+      		
+      		<li>
+      		  <h3>Aries</h3>  
+      		  <img src='http://placekitten.com/400/400'>
+      		  <button class='buy'>Preorder</button>
+      		</li>
+      		
+      		<li>
+      		  <h3>Pisces</h3>
+      		  <img src='http://placekitten.com/400/400'>
+      		  <button class='buy'>Preorder</button>
+      		</li>
+      		
+      		<li>
+      		  <h3>Aquarius</h3>
+      		  <img src='http://placekitten.com/400/400'>
+      		  <button class='buy'>Preorder</button>
+      		</li>
+      		  
+          <li>
+            <h3>Capricorn</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+          
+          <li>
+            <h3>Sagittarius</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+          
+          <li>
+            <h3>Scorpio</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+          
+          <li>
+            <h3>Libra</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+            
+      		<li>
+      		  <h3>Virgo</h3>
+      		  <img src='http://placekitten.com/400/400'>
+      		  <button class='buy'>Preorder</button>
+      		</li>
+      		
+      		<li>
+      		  <h3>Leo</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+          
+          <li>
+            <h3>Cancer</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+          
+          <li>
+            <h3>Gemini</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+          
+          <li>
+            <h3>Taurus</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+          
+          <li>
+            <h3>Orion</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+            
+      		<li>
+      		  <h3>Big Dipper</h3>
+            <img src='http://placekitten.com/400/400'>
+            <button class='buy'>Preorder</button>
+          </li>
+          
+    		</ul>
+  		
+  		</div>
+		
+		</section><!-- /main -->
+
+<% include partials/footer.html %>
